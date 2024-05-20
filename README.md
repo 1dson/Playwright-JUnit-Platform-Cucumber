@@ -1,2 +1,2 @@
-# Playwright-Java
+# Playwright-JUnit-Platform-Cucumber
 Java concurrent playwright test

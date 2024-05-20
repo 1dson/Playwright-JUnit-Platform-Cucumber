@@ -7,5 +7,6 @@ Feature: Search for multiple items on search engine
     And I search for "<SearchString>"
     Then I should see "<SearchString>" text
     Examples:
-      | SearchString          |
-      | https://www.bbc.co.uk |
+      | SearchString |
+      | bbc          |
+      | itv          |
