@@ -1,0 +1,6 @@
+org/testing/framework/runners/CucumberTestRunner.class
+org/testing/framework/runners/CustomRunner.class
+org/testing/framework/stepdefs/Search.class
+org/testing/framework/injectors/World.class
+org/testing/framework/injectors/Initialisation.class
+org/testing/framework/Setup.class
