@@ -3,6 +3,8 @@ package wonderson.test;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.TestInstance;
 
+import java.io.IOException;
+
 import static com.microsoft.playwright.Playwright.create;
 
 // Subclasses will inherit PER_CLASS behavior.
@@ -15,19 +17,18 @@ public class Setup {
     BrowserContext context;
     Page page;
 
-    public Page selectBrowser(String browserName, Boolean headless) {
-        BrowserType browserType = null;
-        if (browserName.equals("Firefox")) {
-            browserType = create().firefox();
-        }
-        if (browserName.equals("Chrome")) {
-            browserType = create().chromium();
-        }
-        if (browserType == null) {
-            throw new IllegalArgumentException("Browser " + browserName + "could not be launched");
-        }
-        if(headless == null){
-            throw new IllegalArgumentException("You must specify if you want the browser is to be in headed or headless");
+    public Page selectBrowser(String browserName) {
+        boolean headless = false;
+        BrowserType browserType;
+        switch (browserName) {
+            case "firefox":
+                browserType = create().firefox();
+                break;
+            case "chromium":
+                browserType = create().chromium();
+                break;
+            default:
+                throw new IllegalArgumentException("Browser " + browserName + "not found, options are 1)firefox 2)chromium");
         }
         browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(headless));
         context = browser.newContext();
@@ -35,10 +36,10 @@ public class Setup {
         return page;
     }
 
-    public void closeBrowseAndPage(){
-        if(browser != null)
+    public void closeBrowseAndPage() {
+        if (browser != null)
             browser.close();
-        if(page != null){
+        if (page != null) {
             page.close();
         }
     }
