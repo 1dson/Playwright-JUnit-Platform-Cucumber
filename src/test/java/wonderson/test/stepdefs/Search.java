@@ -3,6 +3,7 @@ package wonderson.test.stepdefs;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -23,7 +24,7 @@ public class Search extends Setup {
 
     @Before
     public void setPage() {
-        page = selectBrowser("Chrome", false);
+        page = selectBrowser(System.getProperty("browser"));
     }
 
     @Given("I am on the google search page")
