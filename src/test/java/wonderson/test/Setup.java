@@ -3,6 +3,8 @@ package wonderson.test;
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.TestInstance;
 
+import static com.microsoft.playwright.Playwright.create;
+
 // Subclasses will inherit PER_CLASS behavior.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Setup {
@@ -14,11 +16,12 @@ public class Setup {
     Page page;
 
     public Page selectBrowser(String browserName, Boolean headless) {
-        BrowserType browserType;
+        BrowserType browserType = null;
         if (browserName.equals("Firefox")) {
-            browserType = Playwright.create().firefox();
-        } else {
-            browserType = Playwright.create().chromium();
+            browserType = create().firefox();
+        }
+        if (browserName.equals("Chrome")) {
+            browserType = create().chromium();
         }
         if (browserType == null) {
             throw new IllegalArgumentException("Browser " + browserName + "could not be launched");
