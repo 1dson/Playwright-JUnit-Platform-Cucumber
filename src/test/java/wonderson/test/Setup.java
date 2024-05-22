@@ -18,9 +18,13 @@ public class Setup {
     Page page;
 
     public Page selectBrowser(String browserName) {
-        boolean headless = false;
+        boolean runInHeadlessMode = false;
         BrowserType browserType;
         switch (browserName) {
+            case "headless":
+                runInHeadlessMode = true;
+                browserType = create().chromium();
+                break;
             case "firefox":
                 browserType = create().firefox();
                 break;
@@ -28,9 +32,9 @@ public class Setup {
                 browserType = create().chromium();
                 break;
             default:
-                throw new IllegalArgumentException("Browser " + browserName + "not found, options are 1)firefox 2)chromium");
+                throw new IllegalArgumentException("Browser " + browserName + " not found, options are 1)firefox 2)chromium");
         }
-        browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(headless));
+        browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(runInHeadlessMode));
         context = browser.newContext();
         page = context.newPage();
         return page;
