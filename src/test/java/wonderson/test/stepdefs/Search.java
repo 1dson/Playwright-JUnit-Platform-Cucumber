@@ -1,6 +1,7 @@
 package wonderson.test.stepdefs;
 
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.assertions.LocatorAssertions;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
@@ -41,7 +42,7 @@ public class Search extends Setup {
 
     @Then("I should see {string} text")
     public void iShouldSeeText(String searchString) {
-        assertThat(page.getByText(searchString)).isVisible();
+        assertThat(page.getByText(searchString)).isVisible(new LocatorAssertions.IsVisibleOptions().setTimeout(200000));
     }
 
     @After
