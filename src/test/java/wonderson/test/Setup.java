@@ -32,7 +32,7 @@ public class Setup {
                 browserType = create().chromium();
                 break;
             default:
-                throw new IllegalArgumentException("Browser " + browserName + " not found, options are 1)firefox 2)chromium");
+                throw new IllegalArgumentException("Browser " + browserName + " not found, options are 1)headless 2)firefox 3)chromium");
         }
         browser = browserType.launch(new BrowserType.LaunchOptions().setHeadless(runInHeadlessMode));
         context = browser.newContext();
