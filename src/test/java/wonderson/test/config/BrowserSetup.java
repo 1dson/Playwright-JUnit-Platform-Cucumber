@@ -1,4 +1,4 @@
-package wonderson.test.helper;
+package wonderson.test.config;
 
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.BeforeAll;

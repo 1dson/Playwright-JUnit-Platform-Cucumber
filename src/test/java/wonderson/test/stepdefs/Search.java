@@ -9,7 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.qameta.allure.Allure;
-import wonderson.test.helper.BrowserSetup;
+import wonderson.test.config.BrowserSetup;
 
 import java.io.IOException;
 import java.io.InputStream;
