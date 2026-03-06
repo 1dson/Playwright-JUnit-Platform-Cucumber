@@ -12,8 +12,7 @@ public class BrowserSetup {
     BrowserContext context;
     Page page;
 
-    @BeforeAll
-    void initPlaywright(){
+    public BrowserSetup(){
         playwright = Playwright.create();
     }
 
